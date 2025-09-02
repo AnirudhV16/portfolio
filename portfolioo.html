@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anirudh Vennapusa - Software Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 0;
+            background: #f1f5f9;
+            border-radius: 8px;
+            padding: 4px;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #64748b;
+            transition: all 0.2s ease;
+        }
+
+        .tab-button.active {
+            background: white;
+            color: #2563eb;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-button:hover:not(.active) {
+            color: #334155;
+        }
+
+        /* Main Content */
+        .main-content {
+            min-height: calc(100vh - 80px);
+            padding: 3rem 0;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Home Tab */
+        .home-section {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+        }
+
+        .home-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .home-subtitle {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+        }
+
+        .home-description {
+            font-size: 1.1rem;
+            color: #475569;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #2563eb;
+            border-color: #2563eb;
+        }
+
+        .btn-secondary:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+        /* About Tab */
+        .about-section {
+            padding: 2rem 0;
+        }
+
+        .about-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 4rem;
+        }
+
+        .about-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #475569;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .education-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #2563eb;
+            padding-bottom: 0.5rem;
+        }
+
+        .education-item {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .education-item:last-child {
+            border-bottom: none;
+        }
+
+        .degree {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .university {
+            color: #2563eb;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .graduation-date {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .coursework {
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        /* Skills Tab - Updated Styles */
+        .skills-section {
+            padding: 2rem 0;
+        }
+
+        .skills-container {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-category {
+            margin-bottom: 1.5rem;
+            /* Reduced from 2rem */
+            padding-bottom: 1rem;
+            /* Reduced from 1.5rem */
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .skill-category:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .category-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            /* Reduced from 2rem */
+            text-align: center;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #2563eb;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+            /* Reduced from 2rem */
+            justify-items: center;
+        }
+
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: default;
+            padding: 1rem;
+            border-radius: 15px;
+        }
+
+        .skill-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.2);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-icon img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+        }
+
+        .skill-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-top: 0.5rem;
+            line-height: 1.2;
+            max-width: 100px;
+            word-wrap: break-word;
+        }
+
+        /* Profile buttons styles - Fixed for responsiveness */
+        .profile-buttons-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            /* Reduced from 3rem */
+            flex-wrap: wrap;
+        }
+
+        .profile-buttons-label {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            flex-shrink: 0;
+            /* Prevent shrinking */
+        }
+
+        .profile-buttons-wrapper {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            flex: 1;
+        }
+
+        .profile-button {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: black;
+            font-size: 0.85rem;
+            font-weight: 600;
+            flex-direction: column;
+            gap: 0.2rem;
+            flex-shrink: 0;
+            /* Prevent shrinking */
+        }
+
+        .profile-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(37, 99, 235, 0.4);
+        }
+
+        .profile-button img {
+            width: 35px;
+            height: 35px;
+        }
+
+        /* Projects Tab */
+        .projects-section {
+            padding: 2rem 0;
+        }
+
+        .projects-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .projects-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .projects-subtitle {
+            font-size: 1.1rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .projects-container {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .project-item {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2rem;
+            padding: 2rem;
+            align-items: start;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.2);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .project-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e293b;
+            line-height: 1.2;
+        }
+
+        .project-description {
+            font-size: 1rem;
+            color: #475569;
+            line-height: 1.7;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .tech-tag {
+            background: #eff6ff;
+            color: #2563eb;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid #dbeafe;
+            transition: all 0.2s ease;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+
+        .project-link {
+            color: white;
+            background: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Contact Tab */
+        .contact-section {
+            padding: 2rem 0;
+        }
+
+        .contact-intro {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-intro h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .contact-intro p {
+            font-size: 1.1rem;
+            color: #64748b;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: #2563eb;
+            width: 50px;
+            text-align: center;
+        }
+
+        .contact-details {
+            flex: 1;
+        }
+
+        .contact-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-info {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        .contact-link {
+            color: #2563eb;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .contact-link:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+        .email-cta {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 2px solid #2563eb;
+        }
+
+        .email-cta h3 {
+            color: #1e293b;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .email-cta .btn {
+            background: #2563eb;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.2s ease;
+        }
+
+        .email-cta .btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-tabs {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .tab-button {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .home-title {
+                font-size: 2.5rem;
+            }
+
+            .projects-title {
+                font-size: 2rem;
+            }
+
+            .project-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .project-image {
+                height: 200px;
+            }
+
+            .project-title {
+                font-size: 1.5rem;
+            }
+
+            .project-links {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .project-link {
+                text-align: center;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .skill-icon {
+                width: 70px;
+                height: 70px;
+            }
+
+            .skill-icon img {
+                width: 35px;
+                height: 35px;
+            }
+
+            .skill-name {
+                font-size: 0.8rem;
+            }
+
+            /* Fixed mobile responsiveness for profile buttons */
+            .profile-buttons-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+                margin-bottom: 2rem;
+                text-align: center;
+            }
+
+            .profile-buttons-label {
+                font-size: 1.3rem;
+                margin-right: 0;
+                margin-left: 0;
+                margin-bottom: 0.5rem;
+            }
+
+            .profile-buttons-wrapper {
+                justify-content: center;
+                gap: 1.5rem;
+            }
+
+            .profile-button {
+                width: 80px;
+                height: 80px;
+                font-size: 0.8rem;
+            }
+
+            .profile-button img {
+                width: 30px;
+                height: 30px;
+            }
+
+            /* Reduce spacing in skills section for mobile */
+            .skills-container {
+                padding: 2rem 1rem;
+            }
+
+            .skill-category {
+                margin-bottom: 1rem;
+                padding-bottom: 0.8rem;
+            }
+
+            .category-title {
+                font-size: 1.4rem;
+                margin-bottom: 1rem;
+            }
+
+            .skills-grid {
+                margin-top: 1rem;
+            }
+        }
+
+        /* Additional mobile improvements for very small screens */
+        @media (max-width: 480px) {
+            .profile-buttons-wrapper {
+                gap: 1rem;
+            }
+
+            .profile-button {
+                width: 75px;
+                height: 75px;
+                font-size: 0.75rem;
+            }
+
+            .profile-button img {
+                width: 28px;
+                height: 28px;
+            }
+
+            .skills-container {
+                padding: 1.5rem 0.8rem;
+            }
+
+            .skill-category {
+                margin-bottom: 0.8rem;
+                padding-bottom: 0.6rem;
+            }
+
+            .category-title {
+                font-size: 1.2rem;
+                margin-bottom: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">Anirudh</div>
+                <div class="nav-tabs">
+                    <button class="tab-button active" data-tab="home">Home</button>
+                    <button class="tab-button" data-tab="about">About</button>
+                    <button class="tab-button" data-tab="skills">Skills</button>
+                    <button class="tab-button" data-tab="projects">Projects</button>
+                    <button class="tab-button" data-tab="contact">Contact</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Home Tab -->
+            <div id="home" class="tab-content active">
+                <div class="home-section">
+                    <div class="profile-image">👨‍💻</div>
+                    <h1 class="home-title">Anirudh Vennapusa</h1>
+                    <p class="home-subtitle">Computer Science Graduate & Software Developer</p>
+                    <p class="home-description">
+                        Computer Science graduate with a strong foundation in programming, data structures, and software
+                        development. Proficient
+                        in Python and Java, with hands-on experience in frameworks such as Spring and Django. Quick
+                        learner, passionate, committed to continuous
+                        learning and professional growth.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="#" class="btn btn-primary">Download Resume</a>
+                        <button class="btn btn-secondary" onclick="switchTab('contact')">Contact Me</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Tab -->
+            <div id="about" class="tab-content">
+                <div class="about-section">
+                    <div class="about-content">
+                        <h2 class="section-title">About Me</h2>
+                        <div class="about-text">
+                            <p>
+                                I'm a Computer Science graduate with a solid foundation in programming, data structures,
+                                and software development. My
+                                academic journey gave me both theoretical knowledge and practical exposure to different
+                                programming languages and
+                                frameworks. I've also gained experience in full-stack web development, machine learning,
+                                and software engineering
+                                principles, working with Python, Java, and frameworks such as Spring and Django. I'm
+                                especially curious about AI/ML
+                                applications and building software that can scale effectively.
+                            </p>
+                            <p>
+                                I enjoy working in collaborative environments where I can share ideas and learn from
+                                others. I'm always eager to pick up
+                                new skills and technologies, and my goal is to continue growing as a software developer
+                                while contributing meaningfully
+                                to the team and projects I'm part of.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="education-section">
+                        <h2 class="section-title">Education</h2>
+
+                        <div class="education-item">
+                            <div class="degree">Bachelor of Technology in Computer Science and Engineering</div>
+                            <div class="university">Sri Venkatesa Perumal College of Engineering and Technology</div>
+                            <div class="graduation-date">2021 - 2025 | CGPA: 9.2/10.0</div>
+                            <div class="coursework">
+                                <strong>Key Areas:</strong> Data Structures & Algorithms, Software Engineering,
+                                Database Management Systems, Machine Learning, Web Development, Object-Oriented
+                                Programming, Cloud Computing, Natural Language Processing
+                            </div>
+                        </div>
+
+                        <div class="education-item">
+                            <div class="degree">Intermediate (MPC Stream)</div>
+                            <div class="university">Sri Chaitanya Junior College</div>
+                            <div class="graduation-date">2019 - 2021 | Percentage: 92%</div>
+                            <div class="coursework">
+                                <strong>Stream:</strong> Mathematics, Physics, Chemistry
+                            </div>
+                        </div>
+
+                        <div class="education-item">
+                            <div class="degree">10th Standard</div>
+                            <div class="university">Raman English Medium High School</div>
+                            <div class="graduation-date">2018 - 2019 | GPA: 9.8/10.0</div>
+                            <div class="coursework">
+                                <strong>Achievement:</strong> Outstanding academic performance with high distinction
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Tab -->
+            <div id="skills" class="tab-content">
+                <div class="skills-section">
+                    <div class="skills-container">
+                        <div class="profile-buttons-container">
+                            <span class="profile-buttons-label">PROFILES</span>
+                            <div class="profile-buttons-wrapper">
+                                <a href="https://leetcode.com/u/AavV4/" target="_blank"
+                                    class="profile-button">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/leetcode/leetcode-original.svg"
+                                        alt="LeetCode">
+                                    LeetCode
+                                </a>
+                                <a href="https://github.com/AnirudhV16" target="_blank" class="profile-button">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                                        alt="GitHub">
+                                    GitHub
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3 class="category-title">Programming Languages</h3>
+                            <div class="skills-grid">
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                                            alt="Python">
+                                    </div>
+                                    <div class="skill-name">Python</div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                                            alt="Java">
+                                    </div>
+                                    <div class="skill-name">Java</div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"
+                                            alt="C">
+                                    </div>
+                                    <div class="skill-name">C</div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                                            alt="HTML5">
+                                    </div>
+                                    <div class="skill-name">HTML5</div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                                            alt="CSS3">
+                                    </div>
+                                    <div class="skill-name">CSS3</div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                                            alt="JavaScript">
+                                    </div>
+                                    <div class="skill-name">JavaScript</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3 class="category-title">Frameworks & Libraries</h3>
+                            <div class="skills-grid">
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"
+                                            alt="Spring Boot">
+                                    </div>
+                                    <div class="skill-name">Spring Boot</div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg"
+                                            alt="Django">
+                                    </div>
+                                    <div class="skill-name">Django</div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                                            alt="React.js">
+                                    </div>
+                                    <div class="skill-name">React.js</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3 class="category-title">Databases & Tools</h3>
+                            <div class="skills-grid">
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                                            alt="MySQL">
+                                    </div>
+                                    <div class="skill-name">MySQL</div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+                                            alt="PostgreSQL">
+                                    </div>
+                                    <div class="skill-name">PostgreSQL</div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+                                            alt="MongoDB">
+                                    </div>
+                                    <div class="skill-name">MongoDB</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3 class="category-title">Data Science & Machine Learning</h3>
+                            <div class="skills-grid">
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg"
+                                            alt="NLTK">
+                                    </div>
+                                    <div class="skill-name">NLTK</div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
+                                            alt="Machine Learning">
+                                    </div>
+                                    <div class="skill-name">Machine Learning</div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"
+                                            alt="Data Analysis">
+                                    </div>
+                                    <div class="skill-name">Data Analysis</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3 class="category-title">Tools & Development</h3>
+                            <div class="skills-grid">
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                                            alt="GitHub">
+                                    </div>
+                                    <div class="skill-name">GitHub</div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
+                                            alt="VS Code">
+                                    </div>
+                                    <div class="skill-name">VS Code</div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                                            alt="Git">
+                                    </div>
+                                    <div class="skill-name">Git</div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-icon">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg"
+                                            alt="Postman">
+                                    </div>
+                                    <div class="skill-name">Postman</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Tab -->
+            <div id="projects" class="tab-content">
+                <div class="projects-section">
+                    <div class="projects-header">
+                        <h2 class="projects-title">My Projects</h2>
+                        <p class="projects-subtitle">
+                            Here's a collection of projects I've worked on, showcasing my skills in full-stack
+                            development, machine learning, and software engineering.
+                        </p>
+                    </div>
+
+                    <div class="projects-container">
+                        <!-- Project 1 -->
+                        <div class="project-item">
+                            <div class="project-content">
+                                <div class="project-image">
+                                    <img src="./Screenshot2.png" />
+                                </div>
+                                <div class="project-details">
+                                    <h3 class="project-title">E-Commerce Web Application</h3>
+                                    <p class="project-description">
+                                        This full-stack ecommerce application features a Spring Boot backend with REST
+                                        APIs,
+                                        JWT-based authentication, and role-based authorization (ADMIN/USER) using Spring
+                                        Security,
+                                        connected to a MySQL database hosted on CleverDB via JPA for managing users,
+                                        products,
+                                        carts, and orders. The backend integrates Razorpay for secure payment processing
+                                        and is
+                                        deployed on Hugging Face Spaces. The frontend is built with React 18 and Vite,
+                                        utilizing
+                                        React Router for navigation, Axios for API calls, Context API for state
+                                        management, and
+                                        modern responsive CSS for styling, deployed on Vercel. The application
+                                        implements complete
+                                        ecommerce workflows including user authentication, product management, shopping
+                                        cart
+                                        operations, order placement, and payment processing with distinct interfaces for
+                                        customers
+                                        and administrators.
+                                    </p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">Java</span>
+                                        <span class="tech-tag">Spring Boot</span>
+                                        <span class="tech-tag">React</span>
+                                        <span class="tech-tag">MySQL</span>
+                                        <span class="tech-tag">JWT</span>
+                                        <span class="tech-tag">Spring Security</span>
+                                        <span class="tech-tag">JPA</span>
+                                        <span class="tech-tag">Razorpay</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="https://ecommerce-frontend22-umber-chi-76.vercel.app/" class="project-link">Live Demo</a>
+                                        <a href="https://github.com/AnirudhV16/complete" class="project-link">GitHub</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 2 -->
+                        <div class="project-item">
+                            <div class="project-content">
+                                <div class="project-image">
+                                    <img src="./Screenshot1.png" />
+                                </div>
+                                <div class="project-details">
+                                    <h3 class="project-title">Hybrid SMS Spam Filter</h3>
+                                    <p class="project-description">
+                                        Developed a hybrid SMS spam filtering system using XGBoost, BiLSTM, and RoBERTa,
+                                        integrated with a scalable Django REST API backend and React frontend for
+                                        real-time
+                                        single and bulk message classification. Addressed major issues like high false
+                                        positives,
+                                        sparse spam data, and poor detection of evasive patterns by leveraging
+                                        ensembling and
+                                        adversarial dataset testing. Improved accuracy by 12% and recall by 15%,
+                                        significantly
+                                        enhancing detection of new evasive spam patterns.
+                                    </p>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">Python</span>
+                                        <span class="tech-tag">XGBoost</span>
+                                        <span class="tech-tag">BiLSTM</span>
+                                        <span class="tech-tag">RoBERTa</span>
+                                        <span class="tech-tag">Django</span>
+                                        <span class="tech-tag">React</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="https://unique-blancmange-44c8f0.netlify.app" class="project-link">Live Demo</a>
+                                        <a href="https://github.com/AnirudhV16/Railback" class="project-link">GitHub</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Tab -->
+            <div id="contact" class="tab-content">
+                <div class="contact-section">
+                    <div class="contact-intro">
+                        <h2>Let's Connect</h2>
+                        <p>
+                            I'm actively seeking opportunities to start my career in software development.
+                            Feel free to reach out for job opportunities, collaborations, or just to connect.
+                        </p>
+                    </div>
+
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-details">
+                                <div class="contact-title">Email</div>
+                                <div class="contact-info">
+                                    <a href="mailto:vennapusaani1629@gmail.com"
+                                        class="contact-link">vennapusaani1629@gmail.com</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">💼</div>
+                            <div class="contact-details">
+                                <div class="contact-title">LinkedIn</div>
+                                <div class="contact-info">
+                                    <a href="www.linkedin.com/in/anirudh-reddy-vennapusa-venkat-891842305
+
+" target="_blank" class="contact-link">
+                                        Connect on LinkedIn
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">🔗</div>
+                            <div class="contact-details">
+                                <div class="contact-title">LeetCode</div>
+                                <div class="contact-info">
+                                    <a href="https://leetcode.com/u/AavV4/" target="_blank" class="contact-link">
+                                        View LeetCode Profile
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <div class="contact-details">
+                                <div class="contact-title">Phone</div>
+                                <div class="contact-info">
+                                    <a href="tel:+917416521629" class="contact-link">+91 74165 21629</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-details">
+                                <div class="contact-title">Location</div>
+                                <div class="contact-info">
+                                    Anantapur, Andhra Pradesh, India
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">📄</div>
+                            <div class="contact-details">
+                                <div class="contact-title">Resume</div>
+                                <div class="contact-info">
+                                    <a href="#" class="contact-link">Download PDF</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="email-cta">
+                        <h3>Ready to discuss opportunities?</h3>
+                        <a href="mailto:vennapusaani1629@gmail.com" class="btn">Send me an email</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Tab switching functionality
+        function switchTab(tabName) {
+            // Remove active class from all tabs and buttons
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Add active class to selected tab and button
+            document.getElementById(tabName).classList.add('active');
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+        }
+
+        // Tab button event listeners
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const tabName = button.getAttribute('data-tab');
+                switchTab(tabName);
+            });
+        });
+
+        // Smooth scrolling to top when switching tabs
+        function smoothScrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Add scroll to top when switching tabs
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', smoothScrollToTop);
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add fade-in effect to the main content
+            document.querySelector('.main-content').style.opacity = '0';
+            document.querySelector('.main-content').style.transform = 'translateY(20px)';
+
+            setTimeout(() => {
+                document.querySelector('.main-content').style.transition = 'all 0.5s ease';
+                document.querySelector('.main-content').style.opacity = '1';
+                document.querySelector('.main-content').style.transform = 'translateY(0)';
+            }, 100);
+
+            // Initialize project animations
+            animateProjects();
+        });
+
+        // Add staggered animation to project items
+        function animateProjects() {
+            const projectItems = document.querySelectorAll('.project-item');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.animationDelay = `${index * 0.1}s`;
+                            entry.target.classList.add('animate-in');
+                        }, index * 100);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            projectItems.forEach(item => observer.observe(item));
+        }
+
+        // Add click effect to buttons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255, 255, 255, 0.3)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.pointerEvents = 'none';
+
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple animation
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+    </script>
+</body>
+
+</html>
