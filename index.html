@@ -839,7 +839,7 @@
                         learning and professional growth.
                     </p>
                     <div class="cta-buttons">
-                        <a href="#" class="btn btn-primary">Download Resume</a>
+                        <a href="./Anirudh_.Resume.pdf" class="btn btn-primary">Download Resume</a>
                         <button class="btn btn-secondary" onclick="switchTab('contact')">Contact Me</button>
                     </div>
                 </div>
@@ -1267,7 +1267,7 @@
                             <div class="contact-details">
                                 <div class="contact-title">Resume</div>
                                 <div class="contact-info">
-                                    <a href="#" class="contact-link">Download PDF</a>
+                                    <a href="./Anirudh_.Resume.pdf" class="contact-link">Download PDF</a>
                                 </div>
                             </div>
                         </div>
@@ -1283,9 +1283,8 @@
     </main>
 
     <script>
-        // Tab switching functionality
         function switchTab(tabName) {
-            // Remove active class from all tabs and buttons
+
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.remove('active');
             });
@@ -1294,12 +1293,10 @@
                 button.classList.remove('active');
             });
 
-            // Add active class to selected tab and button
             document.getElementById(tabName).classList.add('active');
             document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
         }
 
-        // Tab button event listeners
         document.querySelectorAll('.tab-button').forEach(button => {
             button.addEventListener('click', () => {
                 const tabName = button.getAttribute('data-tab');
@@ -1307,22 +1304,18 @@
             });
         });
 
-        // Smooth scrolling to top when switching tabs
         function smoothScrollToTop() {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         }
-
-        // Add scroll to top when switching tabs
         document.querySelectorAll('.tab-button').forEach(button => {
             button.addEventListener('click', smoothScrollToTop);
         });
 
-        // Initialize page
         document.addEventListener('DOMContentLoaded', () => {
-            // Add fade-in effect to the main content
+
             document.querySelector('.main-content').style.opacity = '0';
             document.querySelector('.main-content').style.transform = 'translateY(20px)';
 
@@ -1332,11 +1325,9 @@
                 document.querySelector('.main-content').style.transform = 'translateY(0)';
             }, 100);
 
-            // Initialize project animations
             animateProjects();
         });
 
-        // Add staggered animation to project items
         function animateProjects() {
             const projectItems = document.querySelectorAll('.project-item');
 
@@ -1357,10 +1348,8 @@
             projectItems.forEach(item => observer.observe(item));
         }
 
-        // Add click effect to buttons
         document.querySelectorAll('.btn').forEach(btn => {
             btn.addEventListener('click', function (e) {
-                // Create ripple effect
                 const ripple = document.createElement('span');
                 const rect = this.getBoundingClientRect();
                 const size = Math.max(rect.width, rect.height);
